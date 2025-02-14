@@ -1,6 +1,6 @@
 import pandas
 
-from constants.extensions import Extensions
+from constants.base import Extensions
 from utils.files.base import get_extension
 
 

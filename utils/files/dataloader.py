@@ -2,8 +2,9 @@ import os.path
 from typing import SupportsFloat
 
 import kagglehub
+import pandas
 
-from constants.extensions import Extensions
+from constants.base import Extensions, FillMethods
 from utils.files.base import get_filepath_from_directory
 from utils.files.reader import Reader
 
@@ -36,21 +37,20 @@ class Dataloader:
         for col, missing_count in self.get_missing_counts().items():
             print(f'Number of missing values in "{col}" column: {missing_count}.')
 
-    def fill_missing(self, column: str, method: str) -> None:
-        self.data[column].fillna(self.get_value_to_fill(column, method), inplace=True)
+    def fill_missing(self, column: str, method: FillMethods) -> None:
+        self.data[column] = self.data[column].fillna(self.get_value_to_fill(column, method))
 
-    def get_value_to_fill(self, column: str, method: str) -> SupportsFloat:
+    def get_value_to_fill(self, column: str, method: FillMethods) -> SupportsFloat:
         values = self.data[column]
-        match method:
-            case 'median':
-                res = values.median()
-            case 'mean':
-                res = values.mean()
-            case 'most_frequent':
-                res = values.value_counts().argmax()
-            case _:
-                raise ValueError(f'Method "{method}" not supported')
-        return res
+        try:
+            value_getter = {
+                FillMethods.MEDIAN: pandas.Series.median,
+                FillMethods.MEAN: pandas.Series.mean,
+                FillMethods.MOST_FREQUENT: lambda vals: vals.value_counts().argmax(),
+            }[method]
+            return value_getter(values)
+        except KeyError:
+            raise KeyError(f'Method "{method}" not supported')
 
     def __repr__(self):
         return f'{type(self).__name__}({self.filepath})'

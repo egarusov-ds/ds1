@@ -1,20 +1,17 @@
 import numpy as np
 import pytest
 
+from constants.base import FillMethods, KaggleDatasetPaths
 from utils.files.dataloader import Dataloader
 
 
 @pytest.fixture
 def dataloader():
-    return Dataloader.from_kaggle_path("sachinkumar62/datascience-job-data")
+    return Dataloader.from_kaggle_path(KaggleDatasetPaths.DATA_SCIENCE_JOBS)
 
 
-class TestFillData:
-    @pytest.mark.parametrize('method', (
-            'median',
-            'mean',
-            'most_frequent',
-    ))
+class TestFillMissing:
+    @pytest.mark.parametrize('method', FillMethods)
     def test_fill_missing(self, dataloader, method: str):
         col_name = 'training_hours'
         indices_for_missing = dataloader.data[col_name].apply(np.isnan)
