@@ -25,6 +25,7 @@ class TestLoadData:
     @pytest.mark.parametrize('path', (
             "amirmotefaker/twitter-stock-market-dataset",  # csv
             "suruchiarora/yahoo-finance-dataset-2018-2023",  # xlsx
+            "rtatman/iris-dataset-json-version",  # json
     ))
     def test_dataloader_from_kaggle_path(self, path: str):
         self._check_data(Dataloader.from_kaggle_path(path).data)

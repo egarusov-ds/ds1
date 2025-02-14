@@ -16,6 +16,7 @@ class Reader:
             reader_meth = {
                 Extensions.CSV: pandas.read_csv,
                 Extensions.XLSX: pandas.read_excel,
+                Extensions.JSON: pandas.read_json,
             }[Extensions(ext)]
             return reader_meth(filepath)
         except KeyError as exc:
