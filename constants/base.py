@@ -18,3 +18,4 @@ class KaggleDatasetPaths:
     YAHOO_FINANCE = "suruchiarora/yahoo-finance-dataset-2018-2023"
     IRIS = "rtatman/iris-dataset-json-version"
     DATA_SCIENCE_JOBS = "sachinkumar62/datascience-job-data"
+    STARTUPS_GROWTH = "adilshamim8/startup-growth-and-investment-data"

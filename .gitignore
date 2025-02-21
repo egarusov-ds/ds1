@@ -1,4 +1,6 @@
 .idea
+data/
+db_secrets.json
 
 # C extensions
 *.so
