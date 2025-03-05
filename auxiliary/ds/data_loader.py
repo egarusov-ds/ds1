@@ -2,27 +2,27 @@ import os
 
 import kagglehub
 
+from auxiliary.files.base import get_filepath_from_directory
+from auxiliary.files.reader import Reader
 from constants.base import Extensions
-from utils.files.base import get_filepath_from_directory
-from utils.files.reader import Reader
 
 
 class DataLoader:
     """A simple wrapper around pandas Dataframe"""
 
-    def __init__(self, filepath: str):
+    def __init__(self, filepath: str, **read_kwargs):
         self.filepath = filepath
         print(f"{self}: reading data.")
-        self.data = Reader(self.filepath).data
+        self.data = Reader(self.filepath, **read_kwargs).data
 
     @classmethod
-    def from_kaggle_path(cls, kaggle_path: str):
+    def from_kaggle_path(cls, kaggle_path: str, **read_kwargs):
         path = kagglehub.dataset_download(kaggle_path)
         if os.path.isdir(path):
             filepath = get_filepath_from_directory(path, tuple(ext.value for ext in Extensions))
         else:
             filepath = path
-        return DataLoader(filepath)
+        return DataLoader(filepath, **read_kwargs)
 
     def __getattr__(self, item):
         return getattr(self.data, item)

@@ -33,3 +33,9 @@ def get_value_to_fill(df: pd.DataFrame, column: str, method: FillMethods) -> Sup
         return value_getter(values)
     except KeyError:
         raise KeyError(f'Method "{method}" not supported')
+
+def get_downsampled(df: pd.DataFrame, target: str) -> pd.DataFrame:
+    cnt = collections.Counter(dataframe['y'])
+    print(f'Statistics on target variable: {cnt}')
+    # looks highly imbalanced, let's downsample it
+    new_max_count = min(cnt.values())

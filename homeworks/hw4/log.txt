@@ -1,0 +1,335 @@
+2025-03-05 23:15:00,104 [INFO ] Dataset from "henriqueyamahata/bank-marketing":
+2025-03-05 23:15:00,110 [INFO ]    age        job  marital    education  default housing loan    contact  \
+0   56  housemaid  married     basic.4y       no      no   no  telephone   
+1   57   services  married  high.school  unknown      no   no  telephone   
+2   37   services  married  high.school       no     yes   no  telephone   
+3   40     admin.  married     basic.6y       no      no   no  telephone   
+4   56   services  married  high.school       no      no  yes  telephone   
+
+  month day_of_week  ...  campaign  pdays  previous     poutcome emp.var.rate  \
+0   may         mon  ...         1    999         0  nonexistent          1.1   
+1   may         mon  ...         1    999         0  nonexistent          1.1   
+2   may         mon  ...         1    999         0  nonexistent          1.1   
+3   may         mon  ...         1    999         0  nonexistent          1.1   
+4   may         mon  ...         1    999         0  nonexistent          1.1   
+
+   cons.price.idx  cons.conf.idx  euribor3m  nr.employed   y  
+0          93.994          -36.4      4.857       5191.0  no  
+1          93.994          -36.4      4.857       5191.0  no  
+2          93.994          -36.4      4.857       5191.0  no  
+3          93.994          -36.4      4.857       5191.0  no  
+4          93.994          -36.4      4.857       5191.0  no  
+
+[5 rows x 21 columns]
+2025-03-05 23:15:00,340 [INFO ] Statistics in "default" column: default
+no         32588
+unknown     8597
+yes            3
+Name: count, dtype: int64
+2025-03-05 23:15:00,345 [INFO ] Filtering out rows which have "unknown" value in any of the following columns: ('job', 'marital', 'education', 'housing', 'loan')
+2025-03-05 23:15:00,346 [INFO ] Number of entries in dataframe before filtering: 41188
+2025-03-05 23:15:00,360 [INFO ] Number of entries in dataframe after filtering: 38245
+2025-03-05 23:15:00,361 [INFO ] Splitting into source and target
+2025-03-05 23:15:00,366 [INFO ] Resampling
+2025-03-05 23:15:00,369 [INFO ] Target var values-counts before resampling:
+ y
+no     33987
+yes     4258
+Name: count, dtype: int64
+2025-03-05 23:15:00,479 [INFO ] Target var values-counts after resampling:
+ y
+no     33987
+yes    33987
+Name: count, dtype: int64
+2025-03-05 23:15:00,484 [INFO ] Preprocessing, X with OHE, y with LE
+2025-03-05 23:15:00,626 [INFO ] After one-hot encoding, X has following columns: Index(['job_admin.', 'job_blue-collar', 'job_entrepreneur', 'job_housemaid',
+       'job_management', 'job_retired', 'job_self-employed', 'job_services',
+       'job_student', 'job_technician', 'job_unemployed', 'marital_divorced',
+       'marital_married', 'marital_single', 'education_basic.4y',
+       'education_basic.6y', 'education_basic.9y', 'education_high.school',
+       'education_illiterate', 'education_professional.course',
+       'education_university.degree', 'housing_no', 'housing_yes', 'loan_no',
+       'loan_yes', 'contact_cellular', 'contact_telephone', 'month_apr',
+       'month_aug', 'month_dec', 'month_jul', 'month_jun', 'month_mar',
+       'month_may', 'month_nov', 'month_oct', 'month_sep', 'day_of_week_fri',
+       'day_of_week_mon', 'day_of_week_thu', 'day_of_week_tue',
+       'day_of_week_wed', 'poutcome_failure', 'poutcome_nonexistent',
+       'poutcome_success'],
+      dtype='object')
+2025-03-05 23:15:00,627 [INFO ] After label encoding, y has following values: 0    33987
+1    33987
+Name: count, dtype: int64
+2025-03-05 23:15:00,648 [INFO ] Creating a list of x-y correlations, where x is any column from X
+2025-03-05 23:15:00,682 [INFO ] 10 variables most correlated with target variable are:
+2025-03-05 23:15:00,683 [INFO ]   poutcome_success: 0.29199788730296367
+2025-03-05 23:15:00,683 [INFO ]   poutcome_nonexistent: -0.24473698689786874
+2025-03-05 23:15:00,684 [INFO ]   contact_cellular: 0.24028886393193127
+2025-03-05 23:15:00,684 [INFO ]   contact_telephone: -0.24028886393193127
+2025-03-05 23:15:00,685 [INFO ]   month_may: -0.17840782822219023
+2025-03-05 23:15:00,685 [INFO ]   month_oct: 0.15020991083286545
+2025-03-05 23:15:00,686 [INFO ]   month_mar: 0.14442299486008942
+2025-03-05 23:15:00,686 [INFO ]   month_sep: 0.13291591369399774
+2025-03-05 23:15:00,687 [INFO ]   job_blue-collar: -0.12017223198731972
+2025-03-05 23:15:00,687 [INFO ]   job_retired: 0.11863464683589196
+2025-03-05 23:15:00,688 [INFO ] For these new combinations, let's add features to new dataframe features_df:
+2025-03-05 23:15:00,688 [INFO ] Number of X columns before adding features: 45
+2025-03-05 23:15:00,887 [INFO ] 10 variables most correlated with target variable are:
+2025-03-05 23:15:00,888 [INFO ]   poutcome_success_X_poutcome_success: 0.2919978873029637
+2025-03-05 23:15:00,889 [INFO ]   poutcome_nonexistent_X_poutcome_nonexistent: 0.24473698689786832
+2025-03-05 23:15:00,889 [INFO ]   contact_cellular_X_contact_cellular: -0.24028886393193183
+2025-03-05 23:15:00,889 [INFO ]   contact_telephone_X_contact_telephone: -0.24028886393193183
+2025-03-05 23:15:00,890 [INFO ]   month_may_X_month_may: -0.1784078282221893
+2025-03-05 23:15:00,890 [INFO ]   month_oct_X_month_oct: 0.15020991083286556
+2025-03-05 23:15:00,891 [INFO ]   month_mar_X_month_mar: 0.1444229948600894
+2025-03-05 23:15:00,891 [INFO ]   job_retired_X_marital_single: -0.13308687124506882
+2025-03-05 23:15:00,891 [INFO ]   month_sep_X_month_sep: 0.13291591369399833
+2025-03-05 23:15:00,892 [INFO ]   job_blue-collar_X_job_blue-collar: -0.12017223198731897
+2025-03-05 23:15:00,920 [INFO ] Making train/test splits
+2025-03-05 23:15:01,008 [INFO ] X_train shape: (54379, 45)
+2025-03-05 23:15:01,009 [INFO ] Xf_train shape: (54379, 220)
+2025-03-05 23:15:01,010 [INFO ] y_train shape: (54379,)
+2025-03-05 23:15:01,010 [INFO ] X_test shape: (13595, 45)
+2025-03-05 23:15:01,010 [INFO ] Xf_test shape: (13595, 220)
+2025-03-05 23:15:01,011 [INFO ] y_test shape: (13595,)
+2025-03-05 23:15:01,017 [INFO ] Training AdaBoostClassifier classifier on non-FE dataframe.
+2025-03-05 23:15:01,018 [INFO ] Doing grid search with AdaBoostClassifier and params: {'n_estimators': array([30, 50, 70], dtype=uint64), 'learning_rate': array([0.75, 1.  , 1.25])}
+2025-03-05 23:15:39,513 [INFO ] Done in 38.495222772999114 s
+2025-03-05 23:15:39,515 [INFO ] Classifier results: {'mean_fit_time': array([0.47022362, 0.73514509, 1.24605622, 0.59226174, 0.74812527,
+       1.06557355, 0.53963962, 0.8020658 , 1.01969571]), 'std_fit_time': array([0.04558225, 0.0107474 , 0.14634354, 0.15082084, 0.00895433,
+       0.02463183, 0.07017915, 0.12788225, 0.00608212]), 'mean_score_time': array([0.01510129, 0.02285471, 0.0301836 , 0.01465602, 0.02303009,
+       0.03120074, 0.01521792, 0.0228466 , 0.03018527]), 'std_score_time': array([5.49706029e-04, 1.15666837e-04, 1.53932297e-03, 5.45236391e-04,
+       2.23993685e-04, 1.16783584e-03, 3.84986835e-04, 6.09131428e-05,
+       4.62033760e-04]), 'param_learning_rate': masked_array(data=[0.75, 0.75, 0.75, 1.0, 1.0, 1.0, 1.25, 1.25, 1.25],
+             mask=[False, False, False, False, False, False, False, False,
+                   False],
+       fill_value=1e+20), 'param_n_estimators': masked_array(data=[30, 50, 70, 30, 50, 70, 30, 50, 70],
+             mask=[False, False, False, False, False, False, False, False,
+                   False],
+       fill_value=999999,
+            dtype=uint64), 'params': [{'learning_rate': np.float64(0.75), 'n_estimators': np.uint64(30)}, {'learning_rate': np.float64(0.75), 'n_estimators': np.uint64(50)}, {'learning_rate': np.float64(0.75), 'n_estimators': np.uint64(70)}, {'learning_rate': np.float64(1.0), 'n_estimators': np.uint64(30)}, {'learning_rate': np.float64(1.0), 'n_estimators': np.uint64(50)}, {'learning_rate': np.float64(1.0), 'n_estimators': np.uint64(70)}, {'learning_rate': np.float64(1.25), 'n_estimators': np.uint64(30)}, {'learning_rate': np.float64(1.25), 'n_estimators': np.uint64(50)}, {'learning_rate': np.float64(1.25), 'n_estimators': np.uint64(70)}], 'split0_test_score': array([0.62467819, 0.62467819, 0.63102243, 0.65262964, 0.61465612,
+       0.68775285, 0.67267378, 0.68775285, 0.69354542]), 'split1_test_score': array([0.61529974, 0.62835601, 0.63451637, 0.61529974, 0.68297168,
+       0.68692534, 0.67800662, 0.68738507, 0.69106289]), 'split2_test_score': array([0.61750644, 0.61759838, 0.61879367, 0.6099669 , 0.61005885,
+       0.69326958, 0.67791467, 0.69418904, 0.68177639]), 'split3_test_score': array([0.61667893, 0.62927547, 0.63368886, 0.61667893, 0.68370725,
+       0.68830452, 0.68122471, 0.6380103 , 0.6846267 ]), 'split4_test_score': array([0.61645977, 0.61655172, 0.62372414, 0.60873563, 0.60882759,
+       0.62685057, 0.67742529, 0.68698851, 0.69213793]), 'mean_test_score': array([0.61812461, 0.62329196, 0.62834909, 0.62066217, 0.6400443 ,
+       0.67662057, 0.67744901, 0.67886515, 0.68862987]), 'std_test_score': array([0.00335181, 0.00531444, 0.00610559, 0.01626759, 0.03540447,
+       0.02498349, 0.00274179, 0.02059859, 0.00459095]), 'rank_test_score': array([9, 7, 6, 8, 5, 4, 3, 2, 1], dtype=int32)}
+2025-03-05 23:15:39,554 [INFO ] Score on test subset: 0.6906951084957705
+2025-03-05 23:15:39,561 [INFO ] Classification report: 
+              precision    recall  f1-score   support
+
+           0       0.64      0.87      0.74      6797
+           1       0.80      0.51      0.62      6798
+
+    accuracy                           0.69     13595
+   macro avg       0.72      0.69      0.68     13595
+weighted avg       0.72      0.69      0.68     13595
+
+2025-03-05 23:15:39,562 [INFO ] Training AdaBoostClassifier classifier on FE dataframe.
+2025-03-05 23:15:39,563 [INFO ] Doing grid search with AdaBoostClassifier and params: {'n_estimators': array([30, 50, 70], dtype=uint64), 'learning_rate': array([0.75, 1.  , 1.25])}
+2025-03-05 23:19:08,640 [INFO ] Done in 209.07770985200114 s
+2025-03-05 23:19:08,642 [INFO ] Classifier results: {'mean_fit_time': array([2.65027461, 4.41662712, 6.1763907 , 2.60282874, 4.2967783 ,
+       6.34010472, 2.62895117, 4.30517983, 6.03370295]), 'std_fit_time': array([0.07324182, 0.07888755, 0.05981722, 0.02746288, 0.02839475,
+       0.64385612, 0.04575705, 0.03562878, 0.03957082]), 'mean_score_time': array([0.05904617, 0.10620446, 0.13451252, 0.06010275, 0.09235396,
+       0.12640696, 0.05842996, 0.09276657, 0.126758  ]), 'std_score_time': array([0.00061882, 0.02289621, 0.01299564, 0.00162099, 0.001435  ,
+       0.00093513, 0.00084515, 0.00081903, 0.0007392 ]), 'param_learning_rate': masked_array(data=[0.75, 0.75, 0.75, 1.0, 1.0, 1.0, 1.25, 1.25, 1.25],
+             mask=[False, False, False, False, False, False, False, False,
+                   False],
+       fill_value=1e+20), 'param_n_estimators': masked_array(data=[30, 50, 70, 30, 50, 70, 30, 50, 70],
+             mask=[False, False, False, False, False, False, False, False,
+                   False],
+       fill_value=999999,
+            dtype=uint64), 'params': [{'learning_rate': np.float64(0.75), 'n_estimators': np.uint64(30)}, {'learning_rate': np.float64(0.75), 'n_estimators': np.uint64(50)}, {'learning_rate': np.float64(0.75), 'n_estimators': np.uint64(70)}, {'learning_rate': np.float64(1.0), 'n_estimators': np.uint64(30)}, {'learning_rate': np.float64(1.0), 'n_estimators': np.uint64(50)}, {'learning_rate': np.float64(1.0), 'n_estimators': np.uint64(70)}, {'learning_rate': np.float64(1.25), 'n_estimators': np.uint64(30)}, {'learning_rate': np.float64(1.25), 'n_estimators': np.uint64(50)}, {'learning_rate': np.float64(1.25), 'n_estimators': np.uint64(70)}], 'split0_test_score': array([0.6803972 , 0.68287974, 0.68554616, 0.68848841, 0.67819051,
+       0.69731519, 0.69133873, 0.69326958, 0.69409709]), 'split1_test_score': array([0.67570798, 0.66393895, 0.6805811 , 0.66927179, 0.66513424,
+       0.69464877, 0.69400515, 0.69657962, 0.68481059]), 'split2_test_score': array([0.68196028, 0.66320338, 0.68729312, 0.6753402 , 0.70062523,
+       0.70071718, 0.69942994, 0.6949246 , 0.6888562 ]), 'split3_test_score': array([0.67699522, 0.68214417, 0.6951085 , 0.67368518, 0.6918904 ,
+       0.69483266, 0.68747701, 0.67221405, 0.69179846]), 'split4_test_score': array([0.67871264, 0.68652874, 0.68643678, 0.66648276, 0.67089655,
+       0.67245977, 0.6856092 , 0.68514943, 0.68735632]), 'mean_test_score': array([0.67875467, 0.67573899, 0.68699313, 0.67465367, 0.68134739,
+       0.69199471, 0.691572  , 0.68842746, 0.68938373]), 'std_test_score': array([0.00225183, 0.01004806, 0.00467903, 0.00759655, 0.01315175,
+       0.010011  , 0.00489991, 0.00900819, 0.00326647]), 'rank_test_score': array([7, 8, 5, 9, 6, 1, 2, 4, 3], dtype=int32)}
+2025-03-05 23:19:08,855 [INFO ] Score on test subset: 0.6806178742184626
+2025-03-05 23:19:08,862 [INFO ] Classification report: 
+              precision    recall  f1-score   support
+
+           0       0.67      0.71      0.69      6797
+           1       0.69      0.65      0.67      6798
+
+    accuracy                           0.68     13595
+   macro avg       0.68      0.68      0.68     13595
+weighted avg       0.68      0.68      0.68     13595
+
+2025-03-05 23:19:08,863 [INFO ] Training KNeighborsClassifier classifier on non-FE dataframe.
+2025-03-05 23:19:08,864 [INFO ] Doing grid search with KNeighborsClassifier and params: {'n_neighbors': array([3, 5, 7], dtype=uint64), 'weights': ('uniform', 'distance')}
+2025-03-05 23:19:24,876 [INFO ] Done in 16.012584414998855 s
+2025-03-05 23:19:24,878 [INFO ] Classifier results: {'mean_fit_time': array([0.00586243, 0.00486951, 0.00576768, 0.00563931, 0.00513377,
+       0.00556898]), 'std_fit_time': array([1.43698973e-03, 1.73633191e-04, 1.61518674e-03, 9.41082559e-05,
+       3.14650298e-04, 8.90368417e-04]), 'mean_score_time': array([0.67672243, 0.38852673, 0.65829563, 0.38977609, 0.6638463 ,
+       0.38899851]), 'std_score_time': array([0.01034677, 0.01892727, 0.02797693, 0.01333037, 0.03581683,
+       0.01426211]), 'param_n_neighbors': masked_array(data=[3, 3, 5, 5, 7, 7],
+             mask=[False, False, False, False, False, False],
+       fill_value=999999,
+            dtype=uint64), 'param_weights': masked_array(data=['uniform', 'distance', 'uniform', 'distance',
+                   'uniform', 'distance'],
+             mask=[False, False, False, False, False, False],
+       fill_value=np.str_('?'),
+            dtype=object), 'params': [{'n_neighbors': np.uint64(3), 'weights': 'uniform'}, {'n_neighbors': np.uint64(3), 'weights': 'distance'}, {'n_neighbors': np.uint64(5), 'weights': 'uniform'}, {'n_neighbors': np.uint64(5), 'weights': 'distance'}, {'n_neighbors': np.uint64(7), 'weights': 'uniform'}, {'n_neighbors': np.uint64(7), 'weights': 'distance'}], 'split0_test_score': array([0.79008827, 0.80001839, 0.78144538, 0.80498345, 0.76609047,
+       0.80342038]), 'split1_test_score': array([0.78668628, 0.79624862, 0.77519309, 0.79900699, 0.76066569,
+       0.7976278 ]), 'split2_test_score': array([0.79680029, 0.80479956, 0.77923869, 0.80240897, 0.76811328,
+       0.8018573 ]), 'split3_test_score': array([0.79119161, 0.79946672, 0.77997426, 0.80121368, 0.77114748,
+       0.80139757]), 'split4_test_score': array([0.78298851, 0.79301149, 0.76772414, 0.79172414, 0.75797701,
+       0.79126437]), 'mean_test_score': array([0.78955099, 0.79870896, 0.77671511, 0.79986745, 0.76479879,
+       0.79911348]), 'std_test_score': array([0.00462181, 0.00394711, 0.00495015, 0.00450553, 0.00482865,
+       0.00436144]), 'rank_test_score': array([4, 3, 5, 1, 6, 2], dtype=int32)}
+2025-03-05 23:19:25,432 [INFO ] Score on test subset: 0.8118425891872012
+2025-03-05 23:19:25,440 [INFO ] Classification report: 
+              precision    recall  f1-score   support
+
+           0       0.84      0.77      0.80      6797
+           1       0.79      0.86      0.82      6798
+
+    accuracy                           0.81     13595
+   macro avg       0.81      0.81      0.81     13595
+weighted avg       0.81      0.81      0.81     13595
+
+2025-03-05 23:19:25,440 [INFO ] Training KNeighborsClassifier classifier on FE dataframe.
+2025-03-05 23:19:25,441 [INFO ] Doing grid search with KNeighborsClassifier and params: {'n_neighbors': array([3, 5, 7], dtype=uint64), 'weights': ('uniform', 'distance')}
+2025-03-05 23:20:04,280 [INFO ] Done in 38.83911062900006 s
+2025-03-05 23:20:04,282 [INFO ] Classifier results: {'mean_fit_time': array([0.06217408, 0.05720606, 0.06702676, 0.05884361, 0.05926623,
+       0.05794191]), 'std_fit_time': array([0.00821859, 0.0018265 , 0.00731164, 0.00122985, 0.00213977,
+       0.00208432]), 'mean_score_time': array([1.37608624, 1.12602897, 1.36688151, 1.08465843, 1.35544701,
+       1.07619519]), 'std_score_time': array([0.02669353, 0.01703534, 0.04173592, 0.02803561, 0.01712928,
+       0.01586931]), 'param_n_neighbors': masked_array(data=[3, 3, 5, 5, 7, 7],
+             mask=[False, False, False, False, False, False],
+       fill_value=999999,
+            dtype=uint64), 'param_weights': masked_array(data=['uniform', 'distance', 'uniform', 'distance',
+                   'uniform', 'distance'],
+             mask=[False, False, False, False, False, False],
+       fill_value=np.str_('?'),
+            dtype=object), 'params': [{'n_neighbors': np.uint64(3), 'weights': 'uniform'}, {'n_neighbors': np.uint64(3), 'weights': 'distance'}, {'n_neighbors': np.uint64(5), 'weights': 'uniform'}, {'n_neighbors': np.uint64(5), 'weights': 'distance'}, {'n_neighbors': np.uint64(7), 'weights': 'uniform'}, {'n_neighbors': np.uint64(7), 'weights': 'distance'}], 'split0_test_score': array([0.79220302, 0.80213314, 0.78043398, 0.8050754 , 0.76360794,
+       0.80268481]), 'split1_test_score': array([0.78953659, 0.80020228, 0.77997426, 0.80470761, 0.76406767,
+       0.80194925]), 'split2_test_score': array([0.79808753, 0.80764987, 0.78236484, 0.80498345, 0.77243472,
+       0.80433983]), 'split3_test_score': array([0.790548  , 0.80047812, 0.77776756, 0.80038617, 0.76489518,
+       0.80194925]), 'split4_test_score': array([0.7874023 , 0.79806897, 0.77131034, 0.79632184, 0.75843678,
+       0.79485057]), 'mean_test_score': array([0.79155549, 0.80170647, 0.7783702 , 0.80229489, 0.76468846,
+       0.80115474]), 'std_test_score': array([0.00361737, 0.00324065, 0.00382084, 0.00346703, 0.0044874 ,
+       0.00327081]), 'rank_test_score': array([4, 2, 5, 1, 6, 3], dtype=int32)}
+2025-03-05 23:20:05,910 [INFO ] Score on test subset: 0.8122839279146745
+2025-03-05 23:20:05,919 [INFO ] Classification report: 
+              precision    recall  f1-score   support
+
+           0       0.84      0.77      0.80      6797
+           1       0.79      0.86      0.82      6798
+
+    accuracy                           0.81     13595
+   macro avg       0.81      0.81      0.81     13595
+weighted avg       0.81      0.81      0.81     13595
+
+2025-03-05 23:20:05,920 [INFO ] Training DecisionTreeClassifier classifier on non-FE dataframe.
+2025-03-05 23:20:05,920 [INFO ] Doing grid search with DecisionTreeClassifier and params: {'max_depth': (None, 3, 5)}
+2025-03-05 23:20:07,295 [INFO ] Done in 1.37406694099991 s
+2025-03-05 23:20:07,296 [INFO ] Classifier results: {'mean_fit_time': array([0.14181652, 0.03252668, 0.05278983]), 'std_fit_time': array([0.00973955, 0.00125922, 0.00510873]), 'mean_score_time': array([0.00339503, 0.00193262, 0.00220342]), 'std_score_time': array([2.53244053e-04, 6.96574062e-05, 2.31121962e-04]), 'param_max_depth': masked_array(data=[None, 3, 5],
+             mask=[False, False, False],
+       fill_value=np.str_('?'),
+            dtype=object), 'params': [{'max_depth': None}, {'max_depth': 3}, {'max_depth': 5}], 'split0_test_score': array([0.82429202, 0.61916146, 0.64757264]), 'split1_test_score': array([0.82282089, 0.62044869, 0.64748069]), 'split2_test_score': array([0.82171754, 0.6141964 , 0.64738875]), 'split3_test_score': array([0.82420007, 0.62109231, 0.65207797]), 'split4_test_score': array([0.81903448, 0.61471264, 0.64524138]), 'mean_test_score': array([0.822413  , 0.6179223 , 0.64795228]), 'std_test_score': array([0.00193849, 0.0029035 , 0.0022385 ]), 'rank_test_score': array([1, 3, 2], dtype=int32)}
+2025-03-05 23:20:07,301 [INFO ] Score on test subset: 0.8301581463773446
+2025-03-05 23:20:07,310 [INFO ] Classification report: 
+              precision    recall  f1-score   support
+
+           0       0.86      0.79      0.82      6797
+           1       0.81      0.87      0.84      6798
+
+    accuracy                           0.83     13595
+   macro avg       0.83      0.83      0.83     13595
+weighted avg       0.83      0.83      0.83     13595
+
+2025-03-05 23:20:07,311 [INFO ] Training DecisionTreeClassifier classifier on FE dataframe.
+2025-03-05 23:20:07,312 [INFO ] Doing grid search with DecisionTreeClassifier and params: {'max_depth': (None, 3, 5)}
+2025-03-05 23:20:16,419 [INFO ] Done in 9.107524577000731 s
+2025-03-05 23:20:16,421 [INFO ] Classifier results: {'mean_fit_time': array([1.00824375, 0.20855098, 0.31588807]), 'std_fit_time': array([0.03303454, 0.00202576, 0.00174276]), 'mean_score_time': array([0.01011629, 0.00878572, 0.00878558]), 'std_score_time': array([0.00135704, 0.00019412, 0.00012586]), 'param_max_depth': masked_array(data=[None, 3, 5],
+             mask=[False, False, False],
+       fill_value=np.str_('?'),
+            dtype=object), 'params': [{'max_depth': None}, {'max_depth': 3}, {'max_depth': 5}], 'split0_test_score': array([0.82511953, 0.62918352, 0.67377712]), 'split1_test_score': array([0.82272894, 0.62596543, 0.66963957]), 'split2_test_score': array([0.82484369, 0.62743656, 0.67120265]), 'split3_test_score': array([0.82603898, 0.63001103, 0.67267378]), 'split4_test_score': array([0.82234483, 0.62528736, 0.67154023]), 'mean_test_score': array([0.8242152 , 0.62757678, 0.67176667]), 'std_test_score': array([0.00143152, 0.00180913, 0.00139705]), 'rank_test_score': array([1, 3, 2], dtype=int32)}
+2025-03-05 23:20:16,440 [INFO ] Score on test subset: 0.8320706141963957
+2025-03-05 23:20:16,447 [INFO ] Classification report: 
+              precision    recall  f1-score   support
+
+           0       0.86      0.79      0.83      6797
+           1       0.81      0.87      0.84      6798
+
+    accuracy                           0.83     13595
+   macro avg       0.83      0.83      0.83     13595
+weighted avg       0.83      0.83      0.83     13595
+
+2025-03-05 23:20:16,447 [INFO ] Training RandomForestClassifier classifier on non-FE dataframe.
+2025-03-05 23:20:16,448 [INFO ] Doing grid search with RandomForestClassifier and params: {'max_depth': (None, 3, 5)}
+2025-03-05 23:20:37,754 [INFO ] Done in 21.306197052999778 s
+2025-03-05 23:20:37,756 [INFO ] Classifier results: {'mean_fit_time': array([2.15305977, 0.55842595, 0.83249345]), 'std_fit_time': array([0.0452993 , 0.01630782, 0.06357102]), 'mean_score_time': array([0.1415638 , 0.01938081, 0.02783084]), 'std_score_time': array([0.00174133, 0.00024619, 0.0026166 ]), 'param_max_depth': masked_array(data=[None, 3, 5],
+             mask=[False, False, False],
+       fill_value=np.str_('?'),
+            dtype=object), 'params': [{'max_depth': None}, {'max_depth': 3}, {'max_depth': 5}], 'split0_test_score': array([0.83835969, 0.68343141, 0.69795881]), 'split1_test_score': array([0.83219934, 0.66210004, 0.69253402]), 'split2_test_score': array([0.83275101, 0.66210004, 0.69897021]), 'split3_test_score': array([0.83642883, 0.68278779, 0.69336153]), 'split4_test_score': array([0.83227586, 0.64671264, 0.69048276]), 'mean_test_score': array([0.83440295, 0.66742638, 0.69466147]), 'std_test_score': array([0.00252465, 0.01398522, 0.0032593 ]), 'rank_test_score': array([1, 3, 2], dtype=int32)}
+2025-03-05 23:20:37,939 [INFO ] Score on test subset: 0.8389113644722325
+2025-03-05 23:20:37,947 [INFO ] Classification report: 
+              precision    recall  f1-score   support
+
+           0       0.87      0.80      0.83      6797
+           1       0.81      0.88      0.85      6798
+
+    accuracy                           0.84     13595
+   macro avg       0.84      0.84      0.84     13595
+weighted avg       0.84      0.84      0.84     13595
+
+2025-03-05 23:20:37,947 [INFO ] Training RandomForestClassifier classifier on FE dataframe.
+2025-03-05 23:20:37,948 [INFO ] Doing grid search with RandomForestClassifier and params: {'max_depth': (None, 3, 5)}
+2025-03-05 23:21:47,594 [INFO ] Done in 69.64612544900046 s
+2025-03-05 23:21:47,596 [INFO ] Classifier results: {'mean_fit_time': array([8.70567055, 1.10204082, 1.70951996]), 'std_fit_time': array([0.09029617, 0.01483443, 0.02198254]), 'mean_score_time': array([0.21701002, 0.02637463, 0.03268924]), 'std_score_time': array([0.02525167, 0.00090255, 0.00074246]), 'param_max_depth': masked_array(data=[None, 3, 5],
+             mask=[False, False, False],
+       fill_value=np.str_('?'),
+            dtype=object), 'params': [{'max_depth': None}, {'max_depth': 3}, {'max_depth': 5}], 'split0_test_score': array([0.83495771, 0.69069511, 0.70246414]), 'split1_test_score': array([0.82953292, 0.67653549, 0.69749908]), 'split2_test_score': array([0.83164766, 0.69225818, 0.70108496]), 'split3_test_score': array([0.83357852, 0.69005149, 0.68802869]), 'split4_test_score': array([0.82905747, 0.68487356, 0.6971954 ]), 'mean_test_score': array([0.83175486, 0.68688277, 0.69725445]), 'std_test_score': array([0.00227193, 0.00573712, 0.00503968]), 'rank_test_score': array([1, 3, 2], dtype=int32)}
+2025-03-05 23:21:47,980 [INFO ] Score on test subset: 0.8374402353806547
+2025-03-05 23:21:47,989 [INFO ] Classification report: 
+              precision    recall  f1-score   support
+
+           0       0.87      0.80      0.83      6797
+           1       0.81      0.88      0.84      6798
+
+    accuracy                           0.84     13595
+   macro avg       0.84      0.84      0.84     13595
+weighted avg       0.84      0.84      0.84     13595
+
+2025-03-05 23:21:47,989 [INFO ] Training DummyClassifier classifier on non-FE dataframe.
+2025-03-05 23:21:47,990 [INFO ] Doing grid search with DummyClassifier and params: {'strategy': ('most_frequent', 'prior', 'stratified')}
+2025-03-05 23:21:48,065 [INFO ] Done in 0.07563781999851926 s
+2025-03-05 23:21:48,067 [INFO ] Classifier results: {'mean_fit_time': array([0.00437803, 0.00326195, 0.00326481]), 'std_fit_time': array([0.00086877, 0.0003007 , 0.00037101]), 'mean_score_time': array([0.00079675, 0.00058355, 0.00097446]), 'std_score_time': array([1.73948169e-04, 1.40950354e-05, 4.39824835e-05]), 'param_strategy': masked_array(data=['most_frequent', 'prior', 'stratified'],
+             mask=[False, False, False],
+       fill_value=np.str_('?'),
+            dtype=object), 'params': [{'strategy': 'most_frequent'}, {'strategy': 'prior'}, {'strategy': 'stratified'}], 'split0_test_score': array([0.5       , 0.5       , 0.49760942]), 'split1_test_score': array([0.5       , 0.5       , 0.50165502]), 'split2_test_score': array([0.5       , 0.5       , 0.50478117]), 'split3_test_score': array([0.5       , 0.5       , 0.49705774]), 'split4_test_score': array([0.50004598, 0.50004598, 0.49416092]), 'mean_test_score': array([0.5000092 , 0.5000092 , 0.49905285]), 'std_test_score': array([1.83908046e-05, 1.83908046e-05, 3.73041228e-03]), 'rank_test_score': array([1, 1, 3], dtype=int32)}
+2025-03-05 23:21:48,068 [INFO ] Score on test subset: 0.4999632217727106
+2025-03-05 23:21:48,076 [INFO ] Classification report: 
+              precision    recall  f1-score   support
+
+           0       0.50      1.00      0.67      6797
+           1       0.00      0.00      0.00      6798
+
+    accuracy                           0.50     13595
+   macro avg       0.25      0.50      0.33     13595
+weighted avg       0.25      0.50      0.33     13595
+
+2025-03-05 23:21:48,077 [INFO ] Training DummyClassifier classifier on FE dataframe.
+2025-03-05 23:21:48,077 [INFO ] Doing grid search with DummyClassifier and params: {'strategy': ('most_frequent', 'prior', 'stratified')}
+2025-03-05 23:21:48,388 [INFO ] Done in 0.3101463130005868 s
+2025-03-05 23:21:48,389 [INFO ] Classifier results: {'mean_fit_time': array([0.02095609, 0.01805677, 0.0180275 ]), 'std_fit_time': array([0.00403029, 0.00038634, 0.00034609]), 'mean_score_time': array([0.00075784, 0.00067701, 0.00101204]), 'std_score_time': array([1.24734403e-04, 2.66805624e-05, 1.54398075e-05]), 'param_strategy': masked_array(data=['most_frequent', 'prior', 'stratified'],
+             mask=[False, False, False],
+       fill_value=np.str_('?'),
+            dtype=object), 'params': [{'strategy': 'most_frequent'}, {'strategy': 'prior'}, {'strategy': 'stratified'}], 'split0_test_score': array([0.5       , 0.5       , 0.50321809]), 'split1_test_score': array([0.5       , 0.5       , 0.50110335]), 'split2_test_score': array([0.5       , 0.5       , 0.50174697]), 'split3_test_score': array([0.5       , 0.5       , 0.49383965]), 'split4_test_score': array([0.50004598, 0.50004598, 0.49314943]), 'mean_test_score': array([0.5000092, 0.5000092, 0.4986115]), 'std_test_score': array([1.83908046e-05, 1.83908046e-05, 4.23948121e-03]), 'rank_test_score': array([1, 1, 3], dtype=int32)}
+2025-03-05 23:21:48,390 [INFO ] Score on test subset: 0.4999632217727106
+2025-03-05 23:21:48,398 [INFO ] Classification report: 
+              precision    recall  f1-score   support
+
+           0       0.50      1.00      0.67      6797
+           1       0.00      0.00      0.00      6798
+
+    accuracy                           0.50     13595
+   macro avg       0.25      0.50      0.33     13595
+weighted avg       0.25      0.50      0.33     13595
+
+2025-03-05 23:21:48,402 [INFO ] Visualization of results

@@ -1,6 +1,6 @@
 from constants.base import KaggleDatasetPaths
-from utils.db.base import DBConnection
-from utils.ds.data_loader import DataLoader
+from auxiliary.db.base import DBConnection
+from auxiliary.ds.data_loader import DataLoader
 from homeworks.hw3.config import DB_NAME
 
 dataframe = DataLoader.from_kaggle_path(KaggleDatasetPaths.STARTUPS_GROWTH).data
