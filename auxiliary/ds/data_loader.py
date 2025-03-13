@@ -12,7 +12,6 @@ class DataLoader:
 
     def __init__(self, filepath: str, **read_kwargs):
         self.filepath = filepath
-        print(f"{self}: reading data.")
         self.data = Reader(self.filepath, **read_kwargs).data
 
     @classmethod

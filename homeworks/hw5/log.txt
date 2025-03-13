@@ -1,0 +1,167 @@
+2025-03-13 22:53:38,657 [INFO ] Dataset from "harlfoxem/housesalesprediction":
+2025-03-13 22:53:38,670 [INFO ]            id             date     price  bedrooms  bathrooms  sqft_living  \
+0  7129300520  20141013T000000  221900.0         3       1.00         1180   
+1  6414100192  20141209T000000  538000.0         3       2.25         2570   
+2  5631500400  20150225T000000  180000.0         2       1.00          770   
+3  2487200875  20141209T000000  604000.0         4       3.00         1960   
+4  1954400510  20150218T000000  510000.0         3       2.00         1680   
+
+   sqft_lot  floors  waterfront  view  ...  grade  sqft_above  sqft_basement  \
+0      5650     1.0           0     0  ...      7        1180              0   
+1      7242     2.0           0     0  ...      7        2170            400   
+2     10000     1.0           0     0  ...      6         770              0   
+3      5000     1.0           0     0  ...      7        1050            910   
+4      8080     1.0           0     0  ...      8        1680              0   
+
+   yr_built  yr_renovated  zipcode      lat     long  sqft_living15  \
+0      1955             0    98178  47.5112 -122.257           1340   
+1      1951          1991    98125  47.7210 -122.319           1690   
+2      1933             0    98028  47.7379 -122.233           2720   
+3      1965             0    98136  47.5208 -122.393           1360   
+4      1987             0    98074  47.6168 -122.045           1800   
+
+   sqft_lot15  
+0        5650  
+1        7639  
+2        8062  
+3        5000  
+4        7503  
+
+[5 rows x 21 columns]
+2025-03-13 22:53:38,672 [INFO ] Number of entries in dataframe: 21613
+2025-03-13 22:53:38,684 [INFO ] Filtering out rows with nan's (however there are none)
+2025-03-13 22:53:38,685 [INFO ] Number of entries in dataframe before filtering: 21613
+2025-03-13 22:53:38,691 [INFO ] Number of entries in dataframe after filtering: 21613
+2025-03-13 22:53:38,693 [INFO ] Removing 'id' and 'date' column, adding 'age' column
+2025-03-13 22:53:39,261 [INFO ] Removing anomalies using percentiles
+2025-03-13 22:53:39,270 [INFO ] After removing values which don't fit in 5-95% range, dataframe has 19511 entries
+2025-03-13 22:53:39,272 [INFO ] Scaling data
+2025-03-13 22:53:39,289 [INFO ] Splitting dataframe into source/target
+2025-03-13 22:53:39,301 [INFO ] Creating a list of x-y correlations, where x is any column from X
+2025-03-13 22:53:39,314 [INFO ] 10 variables most correlated with target variable are:
+2025-03-13 22:53:39,316 [INFO ]   grade: 0.6105292137787415
+2025-03-13 22:53:39,317 [INFO ]   sqft_living: 0.5996821008543273
+2025-03-13 22:53:39,318 [INFO ]   sqft_living15: 0.5428971324851585
+2025-03-13 22:53:39,319 [INFO ]   sqft_above: 0.5103601977493712
+2025-03-13 22:53:39,320 [INFO ]   bathrooms: 0.41587603861535855
+2025-03-13 22:53:39,321 [INFO ]   lat: 0.3902769030435398
+2025-03-13 22:53:39,322 [INFO ]   bedrooms: 0.27021934858582464
+2025-03-13 22:53:39,323 [INFO ]   floors: 0.23971452049329076
+2025-03-13 22:53:39,324 [INFO ]   view: 0.23862441105012813
+2025-03-13 22:53:39,325 [INFO ]   sqft_basement: 0.2150973216153561
+2025-03-13 22:53:39,326 [INFO ] For these new combinations, let's add features to new dataframe features_df:
+2025-03-13 22:53:39,327 [INFO ] Number of X columns (before adding features): 19
+2025-03-13 22:53:39,368 [INFO ] 10 variables most correlated with target variable are:
+2025-03-13 22:53:39,369 [INFO ]   lat_X_lat: -0.35082400946159803
+2025-03-13 22:53:39,370 [INFO ]   sqft_living15_X_sqft_living15: 0.34813015232145045
+2025-03-13 22:53:39,371 [INFO ]   sqft_above_X_sqft_above: 0.3447516450927948
+2025-03-13 22:53:39,372 [INFO ]   grade_X_sqft_above: 0.34253162688687194
+2025-03-13 22:53:39,372 [INFO ]   grade_X_sqft_living: 0.32837648982095485
+2025-03-13 22:53:39,373 [INFO ]   grade_X_sqft_living15: 0.3192042548369234
+2025-03-13 22:53:39,374 [INFO ]   grade_X_grade: 0.3138971277752102
+2025-03-13 22:53:39,376 [INFO ]   sqft_living_X_sqft_living: 0.31069870809542693
+2025-03-13 22:53:39,377 [INFO ]   sqft_above_X_floors: 0.2256352067358572
+2025-03-13 22:53:39,378 [INFO ]   sqft_above_X_bathrooms: 0.22344386572634548
+2025-03-13 22:53:39,387 [INFO ] Number of Xf columns (after adding features): 68
+2025-03-13 22:53:39,395 [INFO ] Making train/test splits
+2025-03-13 22:53:39,420 [INFO ] X_train shape: (15608, 19)
+2025-03-13 22:53:39,422 [INFO ] Xf_train shape: (15608, 68)
+2025-03-13 22:53:39,423 [INFO ] y_train shape: (15608,)
+2025-03-13 22:53:39,424 [INFO ] X_test shape: (3903, 19)
+2025-03-13 22:53:39,425 [INFO ] Xf_test shape: (3903, 68)
+2025-03-13 22:53:39,426 [INFO ] y_test shape: (3903,)
+2025-03-13 22:53:39,446 [INFO ] Training Ridge regressor on non-FE dataframe.
+2025-03-13 22:53:39,448 [INFO ] Doing grid search with Ridge and params: {'alpha': array([0.5, 1. , 1.5])}
+2025-03-13 22:53:39,601 [INFO ] Done in 0.15369716100030928 s
+2025-03-13 22:53:39,607 [INFO ] train MAE: 0.4302138274740088
+2025-03-13 22:53:39,609 [INFO ] train MSE: 0.32575284078998784
+2025-03-13 22:53:39,609 [INFO ] train RMSE: 0.57074761566737
+2025-03-13 22:53:39,615 [INFO ] test MAE: 0.43067702070463976
+2025-03-13 22:53:39,616 [INFO ] test MSE: 0.3157127776767261
+2025-03-13 22:53:39,617 [INFO ] test RMSE: 0.5618832420322981
+2025-03-13 22:53:39,618 [INFO ] Training Ridge regressor on FE dataframe.
+2025-03-13 22:53:39,619 [INFO ] Doing grid search with Ridge and params: {'alpha': array([0.5, 1. , 1.5])}
+2025-03-13 22:53:40,029 [INFO ] Done in 0.41029196999988926 s
+2025-03-13 22:53:40,036 [INFO ] train MAE: 0.39787929037214187
+2025-03-13 22:53:40,038 [INFO ] train MSE: 0.2798982445171846
+2025-03-13 22:53:40,038 [INFO ] train RMSE: 0.5290541035822183
+2025-03-13 22:53:40,043 [INFO ] test MAE: 0.3972225943232065
+2025-03-13 22:53:40,045 [INFO ] test MSE: 0.2705785951741126
+2025-03-13 22:53:40,046 [INFO ] test RMSE: 0.5201716977826769
+2025-03-13 22:53:40,047 [INFO ] Training BayesianRidge regressor on non-FE dataframe.
+2025-03-13 22:53:40,048 [INFO ] Doing grid search with BayesianRidge and params: {'alpha_1': array([5.0e-07, 1.0e-06, 1.5e-06]), 'alpha_2': array([5.0e-07, 1.0e-06, 1.5e-06])}
+2025-03-13 22:53:41,036 [INFO ] Done in 0.9878917900005035 s
+2025-03-13 22:53:41,041 [INFO ] train MAE: 0.4302099318531696
+2025-03-13 22:53:41,042 [INFO ] train MSE: 0.3257532530919104
+2025-03-13 22:53:41,043 [INFO ] train RMSE: 0.5707479768618636
+2025-03-13 22:53:41,047 [INFO ] test MAE: 0.43068157694249337
+2025-03-13 22:53:41,048 [INFO ] test MSE: 0.3157183124682894
+2025-03-13 22:53:41,049 [INFO ] test RMSE: 0.5618881672257295
+2025-03-13 22:53:41,050 [INFO ] Training BayesianRidge regressor on FE dataframe.
+2025-03-13 22:53:41,052 [INFO ] Doing grid search with BayesianRidge and params: {'alpha_1': array([5.0e-07, 1.0e-06, 1.5e-06]), 'alpha_2': array([5.0e-07, 1.0e-06, 1.5e-06])}
+2025-03-13 22:53:50,603 [INFO ] Done in 9.552156166000714 s
+2025-03-13 22:53:50,626 [INFO ] train MAE: 0.39787110768121375
+2025-03-13 22:53:50,634 [INFO ] train MSE: 0.2799030025137517
+2025-03-13 22:53:50,636 [INFO ] train RMSE: 0.5290586002644241
+2025-03-13 22:53:50,641 [INFO ] test MAE: 0.39718185928503286
+2025-03-13 22:53:50,643 [INFO ] test MSE: 0.27057103642108166
+2025-03-13 22:53:50,644 [INFO ] test RMSE: 0.5201644320991985
+2025-03-13 22:53:50,645 [INFO ] Training GradientBoostingRegressor regressor on non-FE dataframe.
+2025-03-13 22:53:50,646 [INFO ] Doing grid search with GradientBoostingRegressor and params: {'n_estimators': array([ 75, 125], dtype=uint8), 'learning_rate': array([0.5, 1.5])}
+2025-03-13 22:54:41,290 [INFO ] Done in 50.64397580399964 s
+2025-03-13 22:54:41,312 [INFO ] train MAE: 0.23259419620028002
+2025-03-13 22:54:41,313 [INFO ] train MSE: 0.10216385017556967
+2025-03-13 22:54:41,313 [INFO ] train RMSE: 0.31963080292044704
+2025-03-13 22:54:41,321 [INFO ] test MAE: 0.26251997954046086
+2025-03-13 22:54:41,321 [INFO ] test MSE: 0.13646375821199352
+2025-03-13 22:54:41,321 [INFO ] test RMSE: 0.3694100136866806
+2025-03-13 22:54:41,322 [INFO ] Training GradientBoostingRegressor regressor on FE dataframe.
+2025-03-13 22:54:41,323 [INFO ] Doing grid search with GradientBoostingRegressor and params: {'n_estimators': array([ 75, 125], dtype=uint8), 'learning_rate': array([0.5, 1.5])}
+2025-03-13 22:58:27,611 [INFO ] Done in 226.28827910200016 s
+2025-03-13 22:58:27,641 [INFO ] train MAE: 0.2206939187129593
+2025-03-13 22:58:27,642 [INFO ] train MSE: 0.09283960137809548
+2025-03-13 22:58:27,643 [INFO ] train RMSE: 0.304695916247815
+2025-03-13 22:58:27,651 [INFO ] test MAE: 0.26132866200533805
+2025-03-13 22:58:27,652 [INFO ] test MSE: 0.1387372621899659
+2025-03-13 22:58:27,652 [INFO ] test RMSE: 0.37247451213467736
+2025-03-13 22:58:27,653 [INFO ] Training LGBMRegressor regressor on non-FE dataframe.
+2025-03-13 22:58:27,653 [INFO ] Doing grid search with LGBMRegressor and params: {'n_estimators': array([ 75, 125], dtype=uint8), 'learning_rate': array([0.5, 1.5])}
+2025-03-13 22:58:29,182 [INFO ] Done in 1.5287143160003325 s
+2025-03-13 22:58:29,191 [INFO ] train MAE: 0.17303995363914898
+2025-03-13 22:58:29,192 [INFO ] train MSE: 0.05498906449145653
+2025-03-13 22:58:29,193 [INFO ] train RMSE: 0.23449747224960982
+2025-03-13 22:58:29,198 [INFO ] test MAE: 0.26326789518016364
+2025-03-13 22:58:29,199 [INFO ] test MSE: 0.1414497517657033
+2025-03-13 22:58:29,200 [INFO ] test RMSE: 0.37609806136924356
+2025-03-13 22:58:29,200 [INFO ] Training LGBMRegressor regressor on FE dataframe.
+2025-03-13 22:58:29,201 [INFO ] Doing grid search with LGBMRegressor and params: {'n_estimators': array([ 75, 125], dtype=uint8), 'learning_rate': array([0.5, 1.5])}
+2025-03-13 22:58:32,318 [INFO ] Done in 3.1164439390013285 s
+2025-03-13 22:58:32,330 [INFO ] train MAE: 0.16001469800299103
+2025-03-13 22:58:32,331 [INFO ] train MSE: 0.04659551062122148
+2025-03-13 22:58:32,331 [INFO ] train RMSE: 0.2158599328759774
+2025-03-13 22:58:32,336 [INFO ] test MAE: 0.2668239208436998
+2025-03-13 22:58:32,337 [INFO ] test MSE: 0.14784154222216392
+2025-03-13 22:58:32,337 [INFO ] test RMSE: 0.384501680389259
+2025-03-13 22:58:32,338 [INFO ] Training ExtraTreesRegressor regressor on non-FE dataframe.
+2025-03-13 22:58:32,339 [INFO ] Doing grid search with ExtraTreesRegressor and params: {'n_estimators': array([ 75, 112, 150], dtype=uint8)}
+2025-03-13 22:59:35,736 [INFO ] Done in 63.397536027998285 s
+2025-03-13 22:59:36,176 [INFO ] train MAE: 6.408781182068985e-07
+2025-03-13 22:59:36,176 [INFO ] train MSE: 3.205296031670146e-09
+2025-03-13 22:59:36,177 [INFO ] train RMSE: 5.661533389171299e-05
+2025-03-13 22:59:36,331 [INFO ] test MAE: 0.2514520707076197
+2025-03-13 22:59:36,332 [INFO ] test MSE: 0.13783833398826903
+2025-03-13 22:59:36,332 [INFO ] test RMSE: 0.3712658535177576
+2025-03-13 22:59:36,333 [INFO ] Training ExtraTreesRegressor regressor on FE dataframe.
+2025-03-13 22:59:36,334 [INFO ] Doing grid search with ExtraTreesRegressor and params: {'n_estimators': array([ 75, 112, 150], dtype=uint8)}
+2025-03-13 23:03:00,989 [INFO ] Done in 204.65509240000029 s
+2025-03-13 23:03:01,517 [INFO ] train MAE: 6.408781182068985e-07
+2025-03-13 23:03:01,518 [INFO ] train MSE: 3.205296031670146e-09
+2025-03-13 23:03:01,518 [INFO ] train RMSE: 5.661533389171299e-05
+2025-03-13 23:03:01,678 [INFO ] test MAE: 0.2597992573841349
+2025-03-13 23:03:01,679 [INFO ] test MSE: 0.14539123841902815
+2025-03-13 23:03:01,679 [INFO ] test RMSE: 0.3813020304417853
+2025-03-13 23:03:01,683 [INFO ] Creating scatter plots of predicted values for different regressor classes
+2025-03-13 23:03:02,402 [INFO ] Visualization of MAE values for different regressors
+2025-03-13 23:03:02,453 [INFO ] Feature engineering wasn't successful for GradientBoosting, LGBM and ExtraTrees regressors, however for simpler regressors like Ridge/Bayesian Ridge it was substantial.
+2025-03-13 23:03:02,535 [INFO ] Plotting train/test errors to get understanding which of regression models suffers most from overfitting
+2025-03-13 23:03:02,579 [INFO ] And the winner is ExtraTrees if one sorts by test_MAE/train_MAE ratio.
